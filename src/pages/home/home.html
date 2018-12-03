@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <h2>Welcome to {{userDetails.name}}</h2>
+  
+  <div class="center">
+    
+    
+
+       
+        
+      
+        <ion-card>
+            
+           
+              <ion-item>
+                  <ion-icon name="md-clock" item-start></ion-icon>
+                  Date
+                  <ion-badge item-end>{{myDate | date: 'dd-MM-yyyy'}}</ion-badge>
+                </ion-item>
+
+
+                <ion-item>
+                    <ion-icon name="md-person" item-start></ion-icon>
+                    Vendeur
+                    <ion-badge item-end>{{userDetails.name}}</ion-badge>
+                  </ion-item>
+
+              <ion-item>
+                  <ion-icon name="ios-basket" item-start></ion-icon>
+                  Vente total de jour
+                  <ion-badge item-end>260k</ion-badge>
+                </ion-item>
+      
+                <ion-item>
+                    <ion-icon name="md-calculator" item-start></ion-icon>
+                    Recette de jour
+                    <ion-badge item-end>260k</ion-badge>
+                  </ion-item>
+
+                  <ion-item>
+                      <ion-icon name="md-trophy" item-start></ion-icon>
+                      Objectif par mois
+                      <ion-badge item-end>260k</ion-badge>
+                    </ion-item>
+              
+        
+          </ion-card>
+    
+</div>
+
+  <ion-card *ngFor="let item of dataSet; let msgIndex = index">
+    <ion-item>
+      <ion-icon name="trash" item-right (click)="feedDelete(item.feed_id, msgIndex)"></ion-icon>
+      <ion-card-content>
+        <p [innerHTML]="item.feed | linky"></p>
+        <span>{{this.converTime(item.created) | amTimeAgo}}</span>
+      </ion-card-content>
+    </ion-item>
+  </ion-card>
+
+  
+
+  <button ion-button color="danger" full (click)="logout()"  icon-start>
+      <ion-icon name='close'></ion-icon>
+    Logout
+  </button>
+
+</ion-content>

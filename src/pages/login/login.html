@@ -1,0 +1,31 @@
+
+<ion-content id="login" padding  class="center">
+
+    <ion-grid>
+            <ion-row>
+              <ion-col text-center>
+    
+                <div class="center">
+                    <img src="assets/imgs/logo.png" class="logo"/>
+                    <ion-list inset>
+
+                        <ion-item>
+                          <ion-input class="noBorder" type="text" placeholder="Username" value="" [(ngModel)]="userData.username"></ion-input>
+                        </ion-item>
+                      
+                        <ion-item>
+                          <ion-input class="noBorder" type="password" placeholder="Password" [(ngModel)]="userData.password"></ion-input>
+                        </ion-item>
+                      
+                        <button ion-button color="unibro"  class="login_panel" full (click)="login()">Login</button>
+                      
+                      </ion-list>
+                    
+                </div>
+
+            </ion-col>
+           </ion-row>
+    </ion-grid>    
+
+
+</ion-content>
