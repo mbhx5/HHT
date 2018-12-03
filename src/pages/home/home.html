@@ -9,10 +9,7 @@
 <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
-
-  <h2>Welcome to {{userDetails.name}}</h2>
-  
+ 
   <div class="center">
     
     
@@ -35,7 +32,11 @@
                     Vendeur
                     <ion-badge item-end>{{userDetails.name}}</ion-badge>
                   </ion-item>
-
+                  <ion-item>
+                    <ion-icon name="md-cube" item-start></ion-icon>
+                    Dépôt
+                    <ion-badge item-end>Sousse</ion-badge>
+                  </ion-item>
               <ion-item>
                   <ion-icon name="ios-basket" item-start></ion-icon>
                   Vente total de jour
@@ -72,7 +73,7 @@
   
 
   <button ion-button color="danger" full (click)="logout()"  icon-start>
-      <ion-icon name='close'></ion-icon>
+      <ion-icon name='md-exit'></ion-icon>
     Logout
   </button>
 
