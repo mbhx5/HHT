@@ -8,9 +8,12 @@ import { Common } from "../../providers/common";
 export class HomePage {
   myDate: String = new Date().toISOString();
 
+  item = {};
+  itmeobj = {};
+  
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-    //this.getFeed();
+    this.getinfovente();
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
@@ -21,12 +24,15 @@ export class HomePage {
   public userDetails: any;
   public resposeData: any;
   public dataSet: any;
+  public dataSetObjectif: any;
   public noRecords: boolean;
   userPostData = {
     user_id: "",
     token: "",
     feed: "",
     feed_id: "",
+    depot: "",
+    name: "",
     lastCreated: ""
   };
 
@@ -39,27 +45,25 @@ export class HomePage {
   ) {
     const data = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data.userData;
-    this.userPostData.user_id = this.userDetails.user_id;
+    this.userPostData.user_id = this.userDetails.id;
+    this.userPostData.depot = this.userDetails.depot;
     this.userPostData.token = this.userDetails.token;
-    this.userPostData.lastCreated = "";
-    this.noRecords = false
+    this.dataSet = false;
+    this.dataSetObjectif = false ;
+    this.noRecords = false;
     //this.getFeed();
+    this.getinfovente();
   }
   getinfovente(){
     this.common.presentLoading();
-    this.authService.postData(this.userPostData, "feed").then(
+    this.authService.postData(this.userPostData, "details").then(
       result => {
         this.resposeData = result;
-        if (this.resposeData.feedData) {
+        if (this.resposeData.depotData) {
           this.common.closeLoading();
-          this.dataSet = this.resposeData.feedData;
-          console.log(this.dataSet);
-
-          //const dataLength = this.resposeData.feedData.length;
-
-          //this.userPostData.lastCreated = this.resposeData.feedData[
-          //  dataLength - 1
-          //].created;
+          this.dataSet = this.resposeData.depotData ;
+          this.dataSetObjectif = this.resposeData.objectifData ;
+          //console.log(this.dataSetObjectif.objectif);
         } else {
           this.common.closeLoading();
           console.log("No access");

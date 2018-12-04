@@ -17,8 +17,7 @@
        
         
       
-        <ion-card>
-            
+        <ion-card >            
            
               <ion-item>
                   <ion-icon name="md-clock" item-start></ion-icon>
@@ -35,24 +34,24 @@
                   <ion-item>
                     <ion-icon name="md-cube" item-start></ion-icon>
                     Dépôt
-                    <ion-badge item-end>Sousse</ion-badge>
+                    <ion-badge item-end>{{dataSet.name}}</ion-badge>
                   </ion-item>
               <ion-item>
                   <ion-icon name="ios-basket" item-start></ion-icon>
                   Vente total de jour
-                  <ion-badge item-end>260k</ion-badge>
+                  <ion-badge item-end>-</ion-badge>
                 </ion-item>
       
                 <ion-item>
                     <ion-icon name="md-calculator" item-start></ion-icon>
                     Recette de jour
-                    <ion-badge item-end>260k</ion-badge>
+                    <ion-badge item-end>-</ion-badge>
                   </ion-item>
 
                   <ion-item>
                       <ion-icon name="md-trophy" item-start></ion-icon>
                       Objectif par mois
-                      <ion-badge item-end>260k</ion-badge>
+                      <ion-badge item-end>{{dataSetObjectif.objectif}}</ion-badge>
                     </ion-item>
               
         
@@ -60,15 +59,7 @@
     
 </div>
 
-  <ion-card *ngFor="let item of dataSet; let msgIndex = index">
-    <ion-item>
-      <ion-icon name="trash" item-right (click)="feedDelete(item.feed_id, msgIndex)"></ion-icon>
-      <ion-card-content>
-        <p [innerHTML]="item.feed | linky"></p>
-        <span>{{this.converTime(item.created) | amTimeAgo}}</span>
-      </ion-card-content>
-    </ion-item>
-  </ion-card>
+
 
   
 
