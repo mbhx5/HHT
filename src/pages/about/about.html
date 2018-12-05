@@ -1,13 +1,36 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <img ion-right src="assets/imgs/bananalogo.png" class="navbarLogo" />
-    <ion-title>About</ion-title>
+    <ion-title>Scan</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+    <h1>
+        <button ion-button color="dark" full (click)="scan()"  icon-start>
+            <ion-icon name='md-camera'></ion-icon>
+            Scan
+        </button>
+      </h1>
+      
+      <ion-card *ngIf="productFound">
+        <ion-card-header>
+          <h2><b>* ID Client : <span class="colorRed">{{selectedProduct.idCompte}}</span></b></h2>
+        </ion-card-header>
+        <ion-card-content>
+            <h2><b>* Nom : </b> {{selectedProduct.nom}}</h2>
+            <h2><b>* Prénom : </b> {{selectedProduct.prenom}}</h2>
+            <h2><b>* N° Tél : </b> {{selectedProduct.telGsm}}</h2>
+            <h2><b>* Présentoir : </b>
+              <div *ngIf="selectedProduct.presentoir == 1;else pas_de_presentoir" >
+                  <span class="colorgreen">OUI</span>
+              </div>
+              
+              <ng-template #pas_de_presentoir><span class="colorRed">NON</span></ng-template>
+              
+              </h2>
+
+        </ion-card-content>
+      </ion-card>
 
 </ion-content>
