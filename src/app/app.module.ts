@@ -26,8 +26,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 
-import { InAppBrowser } from '@ionic-native/in-app-browser';
-
 
 @NgModule({
   declarations: [
@@ -58,7 +56,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   providers: [
     StatusBar,
     SplashScreen,AuthService,SplitPane,Common,BarcodeScanner,Toast,
-    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataServiceProvider
   ]
